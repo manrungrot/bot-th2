@@ -204,12 +204,10 @@ def menuHelp():
                 "┃✍️┃ " + key + "MimicList" + "\n" + \
                 "┃✍️┃ " + key + "MimicAdd @Mention" + "\n" + \
                 "┃✍️┃ " + key + "MimicDel @Mention" + "\n" + \
-                "┃✍️┃ " + key + "Mention" + "\n" + \
+                "┃✍️┃ " + key + "MentionAll" + "\n" + \
                 "┃✍️┃ " + key + "Lurking 「On/Off」" + "\n" + \
                 "┃✍️┃ " + key + "Lurking" + "\n" + \
 				"┃📀┃━━━📀〔 Media Command 〕📀━━━" + "\n" + \
-                "┃📀┃ " + key + "InstaInfo 「Username」" + "\n" + \
-                "┃📀┃ " + key + "InstaStory 「Username」" + "\n" + \
                 "┃📀┃ " + key + "Quotes" + "\n" + \
                 "┃📀┃ " + key + "SearchImage 「Search」" + "\n" + \
                 "┃📀┃ " + key + "SearchMusic 「Search」" + "\n" + \
@@ -1137,23 +1135,6 @@ def clientBot(op):
 								}
 							}
 							client.postJungelpang(to, data)
-						elif cmd.startswith("instainfo"):
-							sep = text.split(" ")
-							txt = text.replace(sep[0] + " ","")
-							url = requests.get("http://rahandiapi.herokuapp.com/instainfo/{}?key=betakey".format(txt))
-							data = url.json()
-							result = "╔══[ Instagram Info ]"
-							result += "\n╠ Name : {}".format(data["result"]["name"])
-							result += "\n╠ Username: {}".format(data["result"]["username"])
-							result += "\n╠ Bio : {}".format(data["result"]["bio"])
-							result += "\n╠ Follower : {}".format(data["result"]["follower"])
-							result += "\n╠ Following : {}".format(data["result"]["following"])
-							result += "\n╠ Private : {}".format(data["result"]["private"])
-							result += "\n╠ Post : {}".format(data["result"]["mediacount"])
-							result += "\n╚══[ Finish ]"
-							client.sendImageWithURL(to, data["result"]["url"])
-							client.sendMessage(to, result)
-						elif cmd.startswith("instastory "):
 							sep = text.split(" ")
 							query = text.replace(sep[0] + " ","")
 							cond = query.split("|")
